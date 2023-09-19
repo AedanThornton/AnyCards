@@ -1,0 +1,95 @@
+/*
+#121212
+#2a2929
+#545151
+#ffffff
+#341247
+*/
+:root {
+    --darkgray: #121212;
+    --midgray: #2a2929;
+    --lightgray: #545151;
+    --purple: #341247;
+    --lightpurple: #543267;
+}
+
+body, div, form, h1, input, textarea {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+body {
+    display: flex;
+}
+
+#navbar {
+    background-color: var(--darkgray);
+    height: 100vh;
+    flex: 1;
+    text-align: center;
+}
+
+#title {
+    font-weight: bold;
+}
+
+#calculator-pane {
+    background-color: var(--midgray);
+    max-height: 100vh;
+    flex: 8;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+#input-display {
+    flex: 3;
+}
+
+#output-display {
+    flex: 5;
+}
+
+.area {
+    padding: 0.5rem;
+    height: 90%;
+}
+
+.input.area {
+    background-color: var(--darkgray);
+    resize: none;
+    border: none;
+    width: -webkit-fill-available;
+}
+
+.graphs.area {
+    background-color: var(--purple);
+}
+
+.btn-container {
+    display: inline;
+    display: flex;
+    gap: 2rem;
+}
+
+.btn {
+    background-color: var(--lightpurple);
+    padding: 5px 10px;
+    margin: 0 2px;
+    border: none;
+}
+
+.selected {
+    background-color: var(--purple);
+}
+
+#calc-btn {
+    background-color: var(--darkgray);
+    width: fit-content;
+    font-size: large;
+    border-top: none;
+    display: block;
+    margin: 0;
+}

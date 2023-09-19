@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Any Cards</title>
+    <link href="/styles/main.css" rel="stylesheet">
+</head>
+<body>
+    <%- include("partials/navbar.ejs") %>
+    <div id="calculator-pane">
+
+        <!-- -->
+        <form action="/" method="post" id="input-display">
+        <!-- -->
+            <textarea class="input area" name="input-area" placeholder="Type functions here"><%= unparsedFormulas %></textarea>
+            <input type="submit" id="calc-btn" class="btn" value="Calculate">
+        <!-- -->
+        </form>
+        <!-- -->
+
+        <div id="output-display">
+            <div class="btn-container">
+                <div class="views-container">
+                    View: 
+                    <button class="view btn selected" id="table">Table</button>
+                    <button class="view btn" id="graph">Graph</button>
+                    <button class="view btn" id="export">Export</button>
+                    <button class="view btn" id="simulate">Simulate</button>
+                </div>
+
+                <div class="data-container">
+                    Data: 
+                    <button class="data btn selected" id="normal">Normal</button>
+                    <button class="data btn" id="at-least">At Least</button>
+                    <button class="data btn" id="at-most">At Most</button>
+                    <button class="data btn" id="transposed">Transposed</button>
+                    <button class="data btn" id="summary">Summary</button>
+                </div>
+            </div>
+
+            <div class="graphs area">
+                <% for( let index = 0; index < 3; index++ ) { %>
+                    <table><%= unparsedFormulas %></table>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="/scripts/main.js"></script>
+
+</html>
