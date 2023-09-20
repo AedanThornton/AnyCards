@@ -11,12 +11,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-    res.render("index.ejs");
+    res.render("index.ejs", {
+        unparsedFormulas: ""
+    });
 });
 
 app.post("/", (req,res) => {
-    const formulas = req.body["input-area"];
-    console.log(formulas);
+    const formulas = req.body["input-area"].replace(/\r\n/g, '\\n');
     res.render("index.ejs", 
         {
             unparsedFormulas: formulas

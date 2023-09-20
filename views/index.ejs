@@ -10,14 +10,10 @@
     <%- include("partials/navbar.ejs") %>
     <div id="calculator-pane">
 
-        <!-- -->
         <form action="/" method="post" id="input-display">
-        <!-- -->
-            <textarea class="input area" name="input-area" placeholder="Type functions here"><%= unparsedFormulas %></textarea>
+            <textarea class="input area" name="input-area" placeholder="Type functions here"><%= unparsedFormulas.replace(/\\n/g, '\n') %></textarea><!--Apparently this line cannot be separated out-->
             <input type="submit" id="calc-btn" class="btn" value="Calculate">
-        <!-- -->
         </form>
-        <!-- -->
 
         <div id="output-display">
             <div class="btn-container">
@@ -45,11 +41,15 @@
                 <% } %>
             </div>
         </div>
+
     </div>
 
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="/scripts/main.js"></script>
+<script>
+    const unparsedFormulas = "<%= unparsedFormulas %>";
+</script>
 
 </html>
