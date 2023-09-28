@@ -12,7 +12,7 @@ app.use(express.static("public"));
 
 app.get("/", (req, res) => {
     res.render("index.ejs", {
-        unparsedFormulas: ""
+        unparsedInput: ""
     });
 });
 
@@ -20,7 +20,7 @@ app.post("/", (req,res) => {
     const formulas = req.body["input-area"].replace(/\r\n/g, '\\n');
     res.render("index.ejs", 
         {
-            unparsedFormulas: formulas
+            unparsedInput: formulas
         }    
     );
 });
