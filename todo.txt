@@ -1,2 +1,7 @@
+2. Constructor functions for Deck and Suit (set, size, getCardCount(card), getCards{returns list of all cards of all suits in deck})
+3. Make Deck constructor add multiple of the same suit better
+4. Math time
+
+
+DONE
 1. Deck parser
-2. Math time
