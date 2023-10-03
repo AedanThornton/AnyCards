@@ -38,12 +38,58 @@ function Deck(name, suits, quantities) {
 
     for (let i = 0; i < suits.length; i++) {
         for (let j = 0; j < quantities[i]; j++) {
-            if (suits[i] in globalObjects) {
-                this.suits.push(globalObjects[suits[i]]);
-            } else {
+            if (!suits[i] in globalObjects) {
                 console.error(`ERROR: Suit "${suits[i]}" not found.`);
+                return undefined;
+            }
+            
+            if (suits[i] in this.suits) {
+                for (card in Object.keys(suits[i].cards)) {
+                    if (card in Object.keys(this.suits[suits[i].name].cards)){
+                        this.suits[suits[i].name].cards[card] += suits[i].cards[card];
+                    } else {
+                        this.suits[suits[i].name].cards[card] = suits[i].cards[card];
+                    }
+                }
+            } else {
+                this.suits.push(globalObjects[suits[i]]);
             }
         }
+    }
+
+    this.cards = {};
+
+    this.getSize = function () {
+        let sum = 0;
+        for (const suit of this.suits) {
+            sum += Object.keys(suit.cards).length;
+        }
+        return sum;
+    }
+
+    this.getCardCount = function (card) { //card is a string of the card name
+        let sum = 0;
+        for (const suit of this.suits) {
+            for (const c of Object.keys(suit.cards)) {
+                if (c === card) sum += suit.cards[c];
+            }
+        }
+        return sum;
+    }
+
+    this.getCardList = function (includeSuitName) { //includeSuitName is a bool
+        let cardList = [];
+        let suitName = "";
+        for (const suit of this.suits) {
+            if (includeSuitName) suitName = " of " + suit.name;
+            else suitName = "";
+            for (const card of Object.keys(suit.cards)){
+                for (let i = 0; i < suit.cards[card]; i++){
+                    cardList.push(card + suitName);
+                }
+            }
+        }
+        return cardList;
     }
 }
 
